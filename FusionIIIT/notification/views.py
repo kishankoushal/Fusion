@@ -423,7 +423,20 @@ def research_procedures_notif(sender,recipient,type):
 
     notify.send(sender=sender,recipient=recipient,url=url,module=module,verb=verb)
 
-    
+def iwd_notif(sender,recipient,type):   
+    module= 'iwdModuleV2'
+    url= 'iwdModuleV2:iwdModuleV2'
+    verb=""
+    if type == "file_forward":
+        verb= "file forwarded from " + sender+"."
+    if type == "Request_added":
+        verb= "Request added by "+ sender + "."
+    if type == "Request_approved": 
+        verb = "Request approved by " + sender + "."
+    if type == "Request_rejected": 
+        verb = "Request rejected by " + sender + "." 
+    notify.send(sender=sender,recipient=recipient,url=url,module=module,verb=verb)
+
 def course_management_notif(sender, recipient, type,  course, course_name, course_code, flag):
     url = 'online_cms:course'
     module="Course Management"
